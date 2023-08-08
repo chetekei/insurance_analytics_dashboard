@@ -1,5 +1,5 @@
 import streamlit as st
-import plotly_express as px
+import plotly as px
 import plotly.graph_objs as go
 from plotly.subplots import make_subplots
 import numpy as np
