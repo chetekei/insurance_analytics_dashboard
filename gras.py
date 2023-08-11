@@ -93,11 +93,10 @@ def chart_amountpaid(df, include_empty_ranges=True):
                               title='Distribution of Claims Recorded by Amount Paid')
     else:
         df_counts = df['Amount Range'].value_counts().reindex(labels, fill_value=0)
-        chart = go.Figure(go.Bar(x=df_counts.index, y=df_counts.values,
-                                  title='Distribution of Claims Recorded by Amount Paid'))
+        chart = px.bar(x=df_counts.index, y=df_counts.values,
+                       labels={'x': 'Amount Range', 'y': 'Number of Claims'},
+                       title='Distribution of Claims Recorded by Amount Paid')
     
-    chart.update_yaxes(title='Number of Claims')
-    chart.update_xaxes(title='Amount Range')    
     return chart
 
 def chart_month(df):
