@@ -178,11 +178,17 @@ if uploaded_file is not None:
         
         num_claims = len(df["Claim No"])
         st.markdown(f"**Total number of claims:** {num_claims}")
-        
+
         claims_per_type = df.groupby("Claim Type").size()
-        per_type = claims_per_type.to_frame()
+        per_type = claims_per_type.to_frame(name='Count')  # Renaming the series to 'Count'
+        per_type.reset_index(inplace=True)  # Reset index to include 'Claim Type' as a column
         newclaims = per_type.to_html(index=False)
         st.markdown(newclaims, unsafe_allow_html=True)
+        
+        #claims_per_type = df.groupby("Claim Type").size()
+        #per_type = claims_per_type.to_frame()
+        #newclaims = per_type.to_html(index=False)
+        #st.markdown(newclaims, unsafe_allow_html=True)
        
 
         
