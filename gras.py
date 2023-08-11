@@ -198,8 +198,8 @@ if uploaded_file is not None:
         # Select desired columns
         top_payouts = top_payouts.loc[:, ['Claim Type', 'Loss Date', 'Claim reserve amount', 'Amount Paid']]
         top_payouts.to_html(index=False)
-        top_payouts = top_payouts.replace('<table', '<table style="font-size: 12px;"')
-        st.markdown(top_payouts, unsafe_allow_html=True)
+        new_top_payouts = top_payouts.replace('<table', '<table style="font-size: 12px;"')
+        st.markdown(new_top_payouts, unsafe_allow_html=True)
    
     else:
         st.write("Failed to load data from the uploaded file.")
