@@ -180,7 +180,8 @@ if uploaded_file is not None:
         st.markdown(f"**Total number of claims:** {num_claims}")
         
         claims_per_type = df.groupby("Claim Type").size()
-        newclaims = claims_per_type.to_html(index=False)
+        per_type = claims_per_type.to_frame()
+        newclaims = per_type.to_html(index=False)
         st.markdown(newclaims, unsafe_allow_html=True)
        
 
