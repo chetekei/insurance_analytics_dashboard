@@ -179,8 +179,8 @@ if uploaded_file is not None:
         num_claims = len(df["Claim No"])
         st.markdown(f"**Total number of claims:** {num_claims}")
         claims_per_type = df.groupby("Claim Type").size()
-        claims_per_type.to_html(index=False)
-        st.markdown(claims_per_type, unsafe_allow_html=True)
+        newclaims = claims_per_type.to_html(index=False)
+        st.markdown(newclaims, unsafe_allow_html=True)
        
 
         
@@ -197,9 +197,9 @@ if uploaded_file is not None:
 
         # Select desired columns
         top_payouts = top_payouts.loc[:, ['Claim Type', 'Loss Date', 'Claim reserve amount', 'Amount Paid']]
-        top_payouts.to_html(index=False)
-        new_top_payouts = top_payouts.replace('<table', '<table style="font-size: 12px;"')
-        st.markdown(new_top_payouts, unsafe_allow_html=True)
+        newtops = top_payouts.to_html(index=False)
+        
+        st.markdown(newtops, unsafe_allow_html=True)
    
     else:
         st.write("Failed to load data from the uploaded file.")
