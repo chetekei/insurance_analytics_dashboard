@@ -168,10 +168,10 @@ if uploaded_file is not None:
     elif chart_select == "Time of Loss Analysis":
         st.plotly_chart(chart_time(df))
         # Calculate number of missing times
-        missing_times = df[df['Time of Loss'] == '00:00:01'].shape[0]
+        # missing_times = df[df['Time of Loss'] == '00:00:01'].shape[0]
 
         # Display text under graph
-        st.write(f" There is a total of {missing_times} claims that have no data on time of occurence."
+        # st.write(f" There is a total of {missing_times} claims that have no data on time of occurence."
                  f" This is a result of cases of theft or buglary where the insured can not really tell the exact time of loss, claim forms without a time of incident allocation or  negligence by the insured where they failed to include the time of loss.")
                   
     elif chart_select == "Brief Description of Data Frame":
