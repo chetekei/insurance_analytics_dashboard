@@ -175,9 +175,9 @@ if uploaded_file is not None:
                  f" This is a result of cases of theft or buglary where the insured can not really tell the exact time of loss, claim forms without a time of incident allocation or  negligence by the insured where they failed to include the time of loss.")
                   
     elif chart_select == "Brief Description of Data Frame":
-        # st.write(df)
+        
         num_claims = len(df["Claim No"])
-        #st.markdown(f"**Total number of claims:** {num_claims}")
+        st.markdown(f"**Total number of claims:** {num_claims}")
         
         claims_per_type = df.groupby("Claim Type").size()
         newclaims = claims_per_type.to_html(index=False)
