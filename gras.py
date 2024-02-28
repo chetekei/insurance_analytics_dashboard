@@ -47,18 +47,15 @@ if uploaded_file is not None:
 
     # convert date column to month name
     df = df.iloc[1:]
-    df['Month'] = pd.to_datetime(df['Loss Date']).dt.strftime('%B')
-    df['Day'] = pd.to_datetime(df['Loss Date']).dt.day_name()
-    df['Year'] = pd.to_datetime(df['Loss Date']).dt.year
+    df['Month'] = pd.to_datetime(df['Loss Date'], dayfirst=True).dt.strftime('%B')
+    df['Day'] = pd.to_datetime(df['Loss Date'], dayfirst=True).dt.day_name()
+    df['Year'] = pd.to_datetime(df['Loss Date'], dayfirst=True).dt.year
     df.dropna(subset=['Claim No'], inplace=True)
     mask = df['Claim Type'].str.startswith('Work Injury')
     df.loc[mask, 'Claim Type'] = 'WIBA'
     df['Count'] = 1
     
     df['Frequency'] = np.bool_(1)
-    
-    # convert timestamp to datetime
-    df['timestamp'] = pd.to_datetime(df['Time of Loss'])
     
      # Main Streamlit app code
     def main(): 
