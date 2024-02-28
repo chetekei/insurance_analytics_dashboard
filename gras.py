@@ -43,9 +43,7 @@ if uploaded_file is not None:
     except Exception as e:    
         st.write("Error:", e)
 
-if uploaded_file is not None:
-
-                      
+if uploaded_file is not None:                     
 
     # convert date column to month name
     df = df.iloc[1:]
