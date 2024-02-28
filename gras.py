@@ -64,9 +64,9 @@ if uploaded_file is not None:
     claims = df.groupby('Claim Type')['Count'].sum()
 
     # Sort by the sum of Count in descending order
-    result = months.sort_values(by='Count', ascending=False)
-    result1 = day.sort_values(by='Count', ascending=False)        
-    result2 = claims.sort_values(by='Count', ascending=False)
+    result = months.sort_values('Count', ascending=False)
+    result1 = day.sort_values('Count', ascending=False)        
+    result2 = claims.sort_values('Count', ascending=False)
 
     # Get the class with the highest sum
     highest_month = result.head(1)
