@@ -57,8 +57,6 @@ if uploaded_file is not None:
     
     df['Frequency'] = np.bool_(1)
     
-     
-    
     months = df.groupby('Month')['Count'].sum()
     day = df.groupby('Day')['Count'].sum()
     claims = df.groupby('Claim Type')['Count'].sum()
