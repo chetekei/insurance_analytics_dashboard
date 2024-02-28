@@ -57,57 +57,52 @@ if uploaded_file is not None:
     
     df['Frequency'] = np.bool_(1)
     
-     # Main Streamlit app code
-    def main(): 
-        # Create a sidebar to switch between views
-        view = st.sidebar.radio("Select", ["Dashboard"])
+     
     
-        if view == "Dashboard":
-    
-            months = df.groupby('Month')['Count'].sum()
-            day = df.groupby('Day')['Count'].sum()
-            claims = df.groupby('Claim Type')['Count'].sum()
-    
-            # Sort by the sum of Count in descending order
-            result = months.sort_values(by='Count', ascending=False)
-            result1 = day.sort_values(by='Count', ascending=False)        
-            result2 = claims.sort_values(by='Count', ascending=False)
-    
-            # Get the class with the highest sum
-            highest_month = result.head(1)
-            highest_day = result1.head(1)
-            highest_class = result2.head(1)
-    
-            month_name = highest_month['Month'].values[0]
-            day_name = highest_day['Day'].values[0]
-            class_name = highest_class['Claim Type'].values[0]
-    
-    
-    
-            st.markdown(
-                            f'<div style= "display: flex; flex-direction: row;">'  # Container with flex layout
-                            f'<div style="background-color: #f19584; padding: 10px; border-radius: 10px; width: 250px; margin-right: 20px;">'
-                            f'<strong style="color: black; font-size: 12px">MOST FREQUENT CLAIM TYPE</strong> <br>'  
-                            f"<br>"
-                            f"{class_name}<br>"
-                            f'</div>'
-                            f'<div style="background-color: #FFE599; padding: 10px; border-radius: 10px; width: 250px; margin-right: 20px;">'
-                            f'<strong style="color: black; font-size: 12px">MOST FREQUENT CLAIM MONTH</strong> <br>'
-                            f"<br>"
-                            f"{month_name}<br>"
-                            f'</div>'                
-                            f'<div style="background-color: #a8e4a0; padding: 10px; border-radius: 10px; width: 250px; margin-right: 20px;">'
-                            f'<strong style="color: black; font-size: 12px">MOST FREQUENT DAY</strong> <br>'  
-                            f"<br>"
-                            f"{day_name}<br>"
-                            f'</div>'                    
-                            f'</div>',
-                            unsafe_allow_html=True
-                        )
-    
-                   
-              
-       
-    
-    
-        
+    months = df.groupby('Month')['Count'].sum()
+    day = df.groupby('Day')['Count'].sum()
+    claims = df.groupby('Claim Type')['Count'].sum()
+
+    # Sort by the sum of Count in descending order
+    result = months.sort_values(by='Count', ascending=False)
+    result1 = day.sort_values(by='Count', ascending=False)        
+    result2 = claims.sort_values(by='Count', ascending=False)
+
+    # Get the class with the highest sum
+    highest_month = result.head(1)
+    highest_day = result1.head(1)
+    highest_class = result2.head(1)
+
+    month_name = highest_month['Month'].values[0]
+    day_name = highest_day['Day'].values[0]
+    class_name = highest_class['Claim Type'].values[0]
+
+
+
+    st.markdown(
+                    f'<div style= "display: flex; flex-direction: row;">'  # Container with flex layout
+                    f'<div style="background-color: #f19584; padding: 10px; border-radius: 10px; width: 250px; margin-right: 20px;">'
+                    f'<strong style="color: black; font-size: 12px">MOST FREQUENT CLAIM TYPE</strong> <br>'  
+                    f"<br>"
+                    f"{class_name}<br>"
+                    f'</div>'
+                    f'<div style="background-color: #FFE599; padding: 10px; border-radius: 10px; width: 250px; margin-right: 20px;">'
+                    f'<strong style="color: black; font-size: 12px">MOST FREQUENT CLAIM MONTH</strong> <br>'
+                    f"<br>"
+                    f"{month_name}<br>"
+                    f'</div>'                
+                    f'<div style="background-color: #a8e4a0; padding: 10px; border-radius: 10px; width: 250px; margin-right: 20px;">'
+                    f'<strong style="color: black; font-size: 12px">MOST FREQUENT DAY</strong> <br>'  
+                    f"<br>"
+                    f"{day_name}<br>"
+                    f'</div>'                    
+                    f'</div>',
+                    unsafe_allow_html=True
+                )
+
+           
+      
+
+
+
+
