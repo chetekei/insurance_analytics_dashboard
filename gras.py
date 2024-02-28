@@ -60,7 +60,7 @@ df['timestamp'] = pd.to_datetime(df['Time of Loss'])
  # Main Streamlit app code
 def main(): 
     # Create a sidebar to switch between views
-    view = st.sidebar.radio("Select", ["Dashboard", "New Update", "Records"])
+    view = st.sidebar.radio("Select", ["Dashboard"])
 
     if view == "Dashboard":
 
